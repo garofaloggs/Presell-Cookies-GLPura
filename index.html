@@ -22,7 +22,7 @@ filter:brightness(0.75);
 z-index:1;
 }
 
-/* BACKGROUND MOBILE (CORRIGIDO) */
+/* BACKGROUND MOBILE */
 @media(max-width:768px){
 .bg{
 background-image:url('https://i.ibb.co/XZVj2ZD5/Captura-de-tela-2026-05-11-203834.png');
@@ -43,7 +43,7 @@ z-index:10;
 padding:20px;
 }
 
-/* MODAL COOKIE (PRESELL STYLE) */
+/* MODAL */
 .modal{
 width:100%;
 max-width:520px;
@@ -117,7 +117,7 @@ from{transform:scale(0.95);opacity:0}
 to{transform:scale(1);opacity:1}
 }
 
-/* MELHORIA MOBILE */
+/* MOBILE */
 @media(max-width:480px){
 .modal{
 padding:24px;
@@ -165,14 +165,16 @@ Decline
 </div>
 
 <script>
+const offerUrl = "https://www.diginear.com/33W2FTW8/2358PKDD/";
+
 function acceptCookies(){
 localStorage.setItem("cookies","accepted");
-document.querySelector(".overlay").style.display="none";
+window.location.href = offerUrl;
 }
 
 function declineCookies(){
 localStorage.setItem("cookies","declined");
-document.querySelector(".overlay").style.display="none";
+window.location.href = offerUrl;
 }
 </script>
 
