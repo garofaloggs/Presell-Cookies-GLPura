@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Optimal Wellness Daily</title>
 
+<!-- GOOGLE ANALYTICS -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z9NM7T198P"></script>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+
+function gtag(){
+dataLayer.push(arguments);
+}
+
+gtag('js', new Date());
+
+gtag('config', 'G-Z9NM7T198P');
+</script>
+
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -43,7 +61,6 @@ content:"";
 position:absolute;
 inset:0;
 background:rgba(0,0,0,0.58);
-backdrop-filter:blur(1px);
 }
 
 .hero-content{
@@ -287,19 +304,9 @@ background:#10b981;
 color:#fff;
 }
 
-.cookie-accept:hover{
-background:#0ea371;
-transform:translateY(-1px);
-}
-
 .cookie-decline{
 background:#374151;
 color:#fff;
-}
-
-.cookie-decline:hover{
-background:#4b5563;
-transform:translateY(-1px);
 }
 
 /* MOBILE */
@@ -319,25 +326,9 @@ font-size:16px;
 font-size:28px;
 }
 
-.section-intro,
-.extra-content p,
-.final-cta p{
-font-size:15px;
-}
-
-.card{
-padding:24px;
-}
-
-.cta-btn{
-width:100%;
-max-width:320px;
-}
-
 .cookie-content{
 flex-direction:column;
 align-items:flex-start;
-padding:20px;
 }
 
 .cookie-buttons{
@@ -362,6 +353,7 @@ opacity:1;
 transform:translateY(0);
 }
 }
+
 </style>
 </head>
 
@@ -384,7 +376,9 @@ Support Your Daily Wellness & Lifestyle Balance
 Explore a modern approach to structured wellness routines designed to complement healthy habits, consistent energy, and everyday lifestyle balance.
 </p>
 
-<a class="cta-btn" href="https://www.diginear.com/33W2FTW8/2358PKDD/">
+<a class="cta-btn"
+onclick="trackOfferClick()"
+href="https://www.diginear.com/33W2FTW8/2358PKDD/">
 Continue to Full Resource
 </a>
 
@@ -407,7 +401,7 @@ Why More People Are Exploring Structured Wellness Routines
 </h2>
 
 <p class="section-intro">
-Daily wellness awareness and routine consistency are becoming increasingly important for individuals seeking better balance, structure, and long-term lifestyle support.
+Daily wellness awareness and routine consistency are becoming increasingly important for individuals seeking better balance and long-term lifestyle support.
 </p>
 
 <div class="benefits">
@@ -415,57 +409,32 @@ Daily wellness awareness and routine consistency are becoming increasingly impor
 <div class="card">
 <h3>Daily Energy Support</h3>
 <p>
-Focused on supporting consistency, routine structure, and balanced daily habits through modern wellness approaches.
+Focused on supporting consistency and balanced daily habits through modern wellness approaches.
 </p>
 </div>
 
 <div class="card">
 <h3>Routine & Lifestyle Balance</h3>
 <p>
-Modern wellness strategies are increasingly centered around sustainable habits and structured lifestyle consistency.
+Modern wellness strategies are increasingly centered around sustainable habits and structured consistency.
 </p>
 </div>
 
 <div class="card">
 <h3>Wellness-Focused Living</h3>
 <p>
-A structured approach designed to complement healthy lifestyle awareness and support everyday balance.
+A structured approach designed to complement healthy lifestyle awareness and everyday balance.
 </p>
 </div>
 
 <div class="card">
 <h3>Everyday Wellness Habits</h3>
 <p>
-Encourages a more mindful and consistent approach to everyday routines, lifestyle structure, and wellness awareness.
+Encourages a more mindful and consistent approach to wellness and lifestyle routines.
 </p>
 </div>
 
 </div>
-
-</div>
-
-</section>
-
-<!-- EXTRA CONTENT -->
-<section class="extra-section">
-
-<div class="extra-content">
-
-<h2>
-A Modern Perspective on Wellness Support
-</h2>
-
-<p>
-As wellness awareness continues to grow globally, more individuals are prioritizing sustainable routines that support consistency, balance, and long-term lifestyle structure.
-</p>
-
-<p>
-Modern approaches to wellness increasingly focus on daily habits, routine awareness, and practical lifestyle support rather than short-term solutions.
-</p>
-
-<p>
-This informational content was created to provide a broader perspective on contemporary wellness trends and structured lifestyle approaches.
-</p>
 
 </div>
 
@@ -479,10 +448,12 @@ Discover the Full Wellness Experience
 </h2>
 
 <p>
-Learn more about modern wellness-focused approaches and explore additional informational resources designed to support healthier daily routines and lifestyle balance.
+Learn more about wellness-focused approaches and explore additional informational resources designed to support healthier daily routines.
 </p>
 
-<a class="cta-btn" href="https://www.diginear.com/33W2FTW8/2358PKDD/">
+<a class="cta-btn"
+onclick="trackOfferClick()"
+href="https://www.diginear.com/33W2FTW8/2358PKDD/">
 Continue to Official Page
 </a>
 
@@ -539,7 +510,11 @@ function acceptCookies(){
 
 localStorage.setItem("cookieConsent","accepted");
 
-console.log("Cookies accepted");
+/* TRACK EVENT */
+gtag('event', 'cookie_accept', {
+event_category: 'engagement',
+event_label: 'accepted'
+});
 
 document.getElementById("cookieBanner").style.display="none";
 }
@@ -549,12 +524,26 @@ function declineCookies(){
 
 localStorage.setItem("cookieConsent","declined");
 
-console.log("Cookies declined");
+/* TRACK EVENT */
+gtag('event', 'cookie_decline', {
+event_category: 'engagement',
+event_label: 'declined'
+});
 
 document.getElementById("cookieBanner").style.display="none";
 }
 
-/* HIDE IF ALREADY ACCEPTED */
+/* TRACK OFFER CLICK */
+function trackOfferClick(){
+
+gtag('event', 'offer_click', {
+event_category: 'affiliate',
+event_label: 'glpura_offer'
+});
+
+}
+
+/* HIDE IF ALREADY CHOSEN */
 window.addEventListener("load",function(){
 
 const consent = localStorage.getItem("cookieConsent");
