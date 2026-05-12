@@ -61,6 +61,7 @@ content:"";
 position:absolute;
 inset:0;
 background:rgba(0,0,0,0.58);
+backdrop-filter:blur(1px);
 }
 
 .hero-content{
@@ -229,7 +230,7 @@ font-size:17px;
 
 /* FOOTER */
 footer{
-padding:35px 20px 120px;
+padding:35px 20px 140px;
 text-align:center;
 font-size:13px;
 background:#0f172a;
@@ -243,70 +244,94 @@ text-decoration:none;
 margin:0 10px;
 }
 
-/* COOKIE BANNER */
+/* COOKIE BANNER PREMIUM */
 #cookieBanner{
 position:fixed;
-bottom:20px;
+bottom:22px;
 left:20px;
 right:20px;
 z-index:9999;
 display:flex;
 justify-content:center;
-animation:slideUp .35s ease;
+animation:slideUp .45s cubic-bezier(.22,.61,.36,1);
 }
 
+/* COOKIE BOX */
 .cookie-content{
 width:100%;
-max-width:950px;
-background:rgba(17,24,39,0.96);
-backdrop-filter:blur(12px);
-border-radius:18px;
-padding:22px;
+max-width:980px;
+background:rgba(17,24,39,0.94);
+backdrop-filter:blur(16px);
+-webkit-backdrop-filter:blur(16px);
+border-radius:22px;
+padding:24px;
 display:flex;
 align-items:center;
 justify-content:space-between;
-gap:20px;
-box-shadow:0 20px 60px rgba(0,0,0,0.35);
+gap:24px;
+box-shadow:
+0 20px 60px rgba(0,0,0,0.45),
+0 8px 24px rgba(0,0,0,0.25);
 border:1px solid rgba(255,255,255,0.08);
 }
 
+/* TEXT */
 .cookie-text h3{
 color:#fff;
 margin-bottom:8px;
-font-size:18px;
+font-size:19px;
+font-weight:700;
+letter-spacing:-0.2px;
 }
 
 .cookie-text p{
 color:#d1d5db;
 font-size:14px;
-line-height:1.6;
-max-width:650px;
+line-height:1.7;
+max-width:680px;
 }
 
+/* BUTTON AREA */
 .cookie-buttons{
 display:flex;
 gap:12px;
 flex-shrink:0;
 }
 
+/* BUTTONS */
 .cookie-buttons button{
-padding:12px 22px;
+padding:13px 24px;
 border:none;
-border-radius:10px;
+border-radius:12px;
 font-weight:700;
 cursor:pointer;
 font-size:14px;
-transition:.2s;
+transition:all .22s ease;
+min-width:120px;
 }
 
+/* ACCEPT */
 .cookie-accept{
-background:#10b981;
+background:linear-gradient(135deg,#10b981,#0ea371);
 color:#fff;
+box-shadow:0 10px 25px rgba(16,185,129,0.28);
 }
 
+.cookie-accept:hover{
+transform:translateY(-2px);
+box-shadow:0 14px 30px rgba(16,185,129,0.38);
+}
+
+/* DECLINE */
 .cookie-decline{
-background:#374151;
+background:rgba(255,255,255,0.08);
 color:#fff;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.cookie-decline:hover{
+background:rgba(255,255,255,0.14);
+transform:translateY(-2px);
 }
 
 /* MOBILE */
@@ -326,32 +351,70 @@ font-size:16px;
 font-size:28px;
 }
 
+.section-intro,
+.extra-content p,
+.final-cta p{
+font-size:15px;
+}
+
+.card{
+padding:24px;
+}
+
+.cta-btn{
+width:100%;
+max-width:320px;
+}
+
+#cookieBanner{
+bottom:14px;
+left:14px;
+right:14px;
+}
+
 .cookie-content{
 flex-direction:column;
 align-items:flex-start;
+padding:20px;
+border-radius:20px;
+gap:18px;
+}
+
+.cookie-text h3{
+font-size:18px;
+}
+
+.cookie-text p{
+font-size:13px;
 }
 
 .cookie-buttons{
 width:100%;
 display:grid;
 grid-template-columns:1fr 1fr;
+gap:10px;
 }
 
 .cookie-buttons button{
 width:100%;
+padding:14px;
+font-size:14px;
 }
 }
 
-/* ANIMATION */
+/* PREMIUM ANIMATION */
 @keyframes slideUp{
+
 from{
 opacity:0;
-transform:translateY(30px);
+transform:translateY(45px) scale(.96);
 }
+
 to{
 opacity:1;
-transform:translateY(0);
+transform:translateY(0) scale(1);
 }
+
 }
 
 </style>
@@ -401,7 +464,7 @@ Why More People Are Exploring Structured Wellness Routines
 </h2>
 
 <p class="section-intro">
-Daily wellness awareness and routine consistency are becoming increasingly important for individuals seeking better balance and long-term lifestyle support.
+Daily wellness awareness and routine consistency are becoming increasingly important for individuals seeking better balance, structure, and long-term lifestyle support.
 </p>
 
 <div class="benefits">
@@ -409,32 +472,57 @@ Daily wellness awareness and routine consistency are becoming increasingly impor
 <div class="card">
 <h3>Daily Energy Support</h3>
 <p>
-Focused on supporting consistency and balanced daily habits through modern wellness approaches.
+Focused on supporting consistency, routine structure, and balanced daily habits through modern wellness approaches.
 </p>
 </div>
 
 <div class="card">
 <h3>Routine & Lifestyle Balance</h3>
 <p>
-Modern wellness strategies are increasingly centered around sustainable habits and structured consistency.
+Modern wellness strategies are increasingly centered around sustainable habits and structured lifestyle consistency.
 </p>
 </div>
 
 <div class="card">
 <h3>Wellness-Focused Living</h3>
 <p>
-A structured approach designed to complement healthy lifestyle awareness and everyday balance.
+A structured approach designed to complement healthy lifestyle awareness and support everyday balance.
 </p>
 </div>
 
 <div class="card">
 <h3>Everyday Wellness Habits</h3>
 <p>
-Encourages a more mindful and consistent approach to wellness and lifestyle routines.
+Encourages a more mindful and consistent approach to everyday routines, lifestyle structure, and wellness awareness.
 </p>
 </div>
 
 </div>
+
+</div>
+
+</section>
+
+<!-- EXTRA CONTENT -->
+<section class="extra-section">
+
+<div class="extra-content">
+
+<h2>
+A Modern Perspective on Wellness Support
+</h2>
+
+<p>
+As wellness awareness continues to grow globally, more individuals are prioritizing sustainable routines that support consistency, balance, and long-term lifestyle structure.
+</p>
+
+<p>
+Modern approaches to wellness increasingly focus on daily habits, routine awareness, and practical lifestyle support rather than short-term solutions.
+</p>
+
+<p>
+This informational content was created to provide a broader perspective on contemporary wellness trends and structured lifestyle approaches.
+</p>
 
 </div>
 
@@ -448,7 +536,7 @@ Discover the Full Wellness Experience
 </h2>
 
 <p>
-Learn more about wellness-focused approaches and explore additional informational resources designed to support healthier daily routines.
+Learn more about modern wellness-focused approaches and explore additional informational resources designed to support healthier daily routines and lifestyle balance.
 </p>
 
 <a class="cta-btn"
@@ -485,6 +573,7 @@ Continue to Official Page
 <p>
 We use cookies and similar technologies to improve your experience, analyze traffic, and support website performance and marketing analytics.
 </p>
+
 </div>
 
 <div class="cookie-buttons">
@@ -516,6 +605,7 @@ event_category: 'engagement',
 event_label: 'accepted'
 });
 
+/* FECHA BANNER */
 document.getElementById("cookieBanner").style.display="none";
 }
 
@@ -530,6 +620,7 @@ event_category: 'engagement',
 event_label: 'declined'
 });
 
+/* FECHA BANNER */
 document.getElementById("cookieBanner").style.display="none";
 }
 
@@ -542,17 +633,6 @@ event_label: 'glpura_offer'
 });
 
 }
-
-/* HIDE IF ALREADY CHOSEN */
-window.addEventListener("load",function(){
-
-const consent = localStorage.getItem("cookieConsent");
-
-if(consent){
-document.getElementById("cookieBanner").style.display="none";
-}
-
-});
 
 </script>
 
