@@ -306,13 +306,9 @@ Continue to Full Resource
 
 <!-- FOOTER LINKS -->
 <div class="footer">
-
 <a href="privacy.html">Privacy Policy</a>
-
 <a href="terms.html">Terms & Conditions</a>
-
 <a href="contact.html">Contact</a>
-
 </div>
 
 <!-- COOKIE BANNER -->
@@ -321,25 +317,15 @@ Continue to Full Resource
 <div class="cookie-box">
 
 <div class="cookie-text">
-
 <h3>🍪 Cookie Notice</h3>
-
 <p>
 We use cookies and similar technologies to improve your browsing experience and analyze website traffic.
 </p>
-
 </div>
 
 <div class="cookie-buttons">
-
-<button class="accept" onclick="acceptCookies()">
-Accept
-</button>
-
-<button class="decline" onclick="declineCookies()">
-Decline
-</button>
-
+<button class="accept" onclick="acceptCookies()">Accept</button>
+<button class="decline" onclick="declineCookies()">Decline</button>
 </div>
 
 </div>
@@ -350,38 +336,30 @@ Decline
 
 /* COOKIE ACCEPT */
 function acceptCookies(){
-
 localStorage.setItem("cookieConsent","accepted");
-
 gtag('event','cookie_accept',{
 event_category:'engagement',
 event_label:'accepted'
 });
-
 document.getElementById("cookieBanner").style.display="none";
 }
 
 /* COOKIE DECLINE */
 function declineCookies(){
-
 localStorage.setItem("cookieConsent","declined");
-
 gtag('event','cookie_decline',{
 event_category:'engagement',
 event_label:'declined'
 });
-
 document.getElementById("cookieBanner").style.display="none";
 }
 
 /* OFFER CLICK */
 function trackOfferClick(){
-
 gtag('event','offer_click',{
 event_category:'affiliate',
 event_label:'glpura_offer'
 });
-
 }
 
 </script>
