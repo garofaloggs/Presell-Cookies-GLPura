@@ -28,6 +28,7 @@ box-sizing:border-box;
 body{
 font-family:Arial,sans-serif;
 overflow:hidden;
+background:#000;
 }
 
 /* BACKGROUND */
@@ -180,6 +181,29 @@ color:#fff;
 transform:translateY(-2px);
 }
 
+/* FOOTER */
+.footer{
+position:fixed;
+bottom:90px;
+left:0;
+width:100%;
+text-align:center;
+z-index:5;
+padding:10px;
+}
+
+.footer a{
+color:#d1d5db;
+text-decoration:none;
+font-size:13px;
+margin:0 10px;
+transition:.2s;
+}
+
+.footer a:hover{
+color:#fff;
+}
+
 /* MOBILE */
 @media(max-width:768px){
 
@@ -214,6 +238,15 @@ grid-template-columns:1fr 1fr;
 
 .cookie-buttons button{
 width:100%;
+}
+
+.footer{
+bottom:140px;
+}
+
+.footer a{
+display:block;
+margin:6px 0;
 }
 }
 
@@ -268,6 +301,17 @@ Continue to Full Resource
 </a>
 
 </div>
+
+</div>
+
+<!-- FOOTER LINKS -->
+<div class="footer">
+
+<a href="privacy.html">Privacy Policy</a>
+
+<a href="terms.html">Terms & Conditions</a>
+
+<a href="contact.html">Contact</a>
 
 </div>
 
