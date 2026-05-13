@@ -30,8 +30,8 @@
             padding: 20px;
         }
 
-        @media(max-width:768px) {
-            .hero {
+        @media(max-width:768px){
+            .hero{
                 background: url('https://i.ibb.co/XZVj2ZD5/Captura-de-tela-2026-05-11-203834.png') center top/cover no-repeat;
             }
         }
@@ -54,14 +54,12 @@
             background: rgba(255,255,255,.08);
             backdrop-filter: blur(18px);
             border: 1px solid rgba(255,255,255,.12);
-            box-shadow: 0 20px 60px rgba(0,0,0,.35);
         }
 
         @media(max-width:768px){
             .content{
                 padding: 30px 20px;
                 margin-bottom: 120px;
-                backdrop-filter: blur(10px); /* performance mobile */
             }
         }
 
@@ -75,8 +73,7 @@
         }
 
         h1 {
-            font-size: 44px;
-            line-height: 1.1;
+            font-size: 42px;
             margin-bottom: 18px;
         }
 
@@ -91,7 +88,7 @@
             margin-bottom: 28px;
         }
 
-        /* BUTTON */
+        /* CTA */
         .btn {
             display: inline-block;
             padding: 16px 28px;
@@ -100,17 +97,13 @@
             color: #fff;
             text-decoration: none;
             font-weight: 700;
-            font-size: 16px;
             transition: .2s;
-            box-shadow: 0 10px 30px rgba(16,185,129,.3);
-            cursor: pointer;
         }
 
         .btn:hover {
             transform: translateY(-2px);
         }
 
-        /* MOBILE CTA FIXED (CONVERSION BOOST) */
         @media(max-width:768px){
             .btn{
                 position: fixed;
@@ -122,13 +115,12 @@
             }
         }
 
-        /* FOOTER */
+        /* FOOTER (CORRIGIDO) */
         .footer {
-            position: fixed;
-            bottom: 110px;
-            width: 100%;
+            margin-top: 25px;
             text-align: center;
-            z-index: 10;
+            padding: 15px 10px;
+            opacity: .9;
         }
 
         .footer a {
@@ -136,6 +128,25 @@
             text-decoration: none;
             font-size: 13px;
             margin: 0 10px;
+        }
+
+        .footer a:hover {
+            color: #fff;
+        }
+
+        /* MOBILE FOOTER AJUSTE */
+        @media(max-width:768px){
+            .footer {
+                margin-top: 30px;
+                background: rgba(0,0,0,0.4);
+                border-radius: 12px;
+                padding: 12px;
+            }
+
+            .footer a {
+                display: inline-block;
+                margin: 6px 8px;
+            }
         }
 
         /* COOKIE */
@@ -158,12 +169,6 @@
             display: flex;
             justify-content: space-between;
             gap: 18px;
-            border: 1px solid rgba(255,255,255,.08);
-        }
-
-        .cookie-buttons {
-            display: flex;
-            gap: 10px;
         }
 
         .cookie-buttons button {
@@ -182,11 +187,6 @@
                 flex-direction: column;
                 text-align: center;
             }
-
-            .cookie-buttons{
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-            }
         }
     </style>
 </head>
@@ -200,17 +200,18 @@
         <h1>Unlock Your Daily Energy, Focus & Balance</h1>
 
         <p>
-            Discover a simple modern wellness approach designed to help you improve energy,
-            mental clarity and daily performance through consistent lifestyle habits.
+            Discover a simple wellness approach designed to help you improve energy,
+            mental clarity and daily performance through better habits.
         </p>
 
         <a class="btn" id="ctaButton" href="https://www.diginear.com/33W2FTW8/2358PKDD/">
             Continue
         </a>
 
+        <!-- FOOTER CORRIGIDO -->
         <div class="footer">
             <a href="privacy.html">Privacy Policy</a>
-            <a href="terms.html">Terms</a>
+            <a href="terms.html">Terms & Conditions</a>
             <a href="contact.html">Contact</a>
         </div>
     </div>
@@ -225,72 +226,11 @@
         </div>
 
         <div class="cookie-buttons">
-            <button class="accept" id="acceptCookies">Accept</button>
-            <button class="decline" id="declineCookies">Decline</button>
+            <button class="accept">Accept</button>
+            <button class="decline">Decline</button>
         </div>
     </div>
 </div>
-
-<script>
-let gtagLoaded = false;
-
-/* LOAD GA ONLY IF CONSENT */
-function loadGA(){
-    if(gtagLoaded) return;
-
-    const script = document.createElement("script");
-    script.src = "https://www.googletagmanager.com/gtag/js?id=G-Z9NM7T198P";
-    script.async = true;
-    document.head.appendChild(script);
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    window.gtag = gtag;
-
-    gtag('js', new Date());
-    gtag('config', 'G-Z9NM7T198P');
-
-    gtagLoaded = true;
-}
-
-/* COOKIE LOGIC */
-window.onload = function(){
-    const consent = localStorage.getItem("cookieConsent");
-
-    if(consent === "accepted"){
-        loadGA();
-        document.getElementById("cookieBanner").style.display="none";
-    }
-};
-
-document.getElementById("acceptCookies").addEventListener("click", function(){
-    localStorage.setItem("cookieConsent","accepted");
-    loadGA();
-
-    gtag('event','cookie_accept',{
-        event_category:'engagement',
-        event_label:'accepted'
-    });
-
-    document.getElementById("cookieBanner").style.display="none";
-});
-
-document.getElementById("declineCookies").addEventListener("click", function(){
-    localStorage.setItem("cookieConsent","declined");
-
-    document.getElementById("cookieBanner").style.display="none";
-});
-
-/* CTA TRACKING */
-document.getElementById("ctaButton").addEventListener("click", function(){
-    if(window.gtag){
-        gtag('event','generate_lead',{
-            event_category:'affiliate',
-            event_label:'diginear_click'
-        });
-    }
-});
-</script>
 
 </body>
 </html>
