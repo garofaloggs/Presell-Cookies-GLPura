@@ -1,367 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimal Wellness Daily</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<title>Optimal Wellness Daily</title>
+        body {
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+        }
 
-<!-- GOOGLE ANALYTICS -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z9NM7T198P"></script>
+        /* HERO */
+        .hero {
+            position: fixed;
+            inset: 0;
+            background: url('https://i.ibb.co/3myF702r/Captura-de-tela-2026-05-11-203849.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
 
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-Z9NM7T198P');
-</script>
+        @media(max-width:768px) {
+            .hero {
+                background: url('https://i.ibb.co/XZVj2ZD5/Captura-de-tela-2026-05-11-203834.png') center top/cover no-repeat;
+            }
+        }
 
-<style>
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,.55);
+        }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+        /* CONTENT */
+        .content {
+            position: relative;
+            z-index: 2;
+            max-width: 620px;
+            text-align: center;
+            padding: 42px 32px;
+            border-radius: 28px;
+            background: rgba(255,255,255,.08);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(255,255,255,.12);
+            box-shadow: 0 20px 60px rgba(0,0,0,.35);
+        }
 
-body{
-font-family:Arial,sans-serif;
-overflow:hidden;
-background:#000;
-}
+        @media(max-width:768px){
+            .content{
+                padding: 30px 20px;
+                margin-bottom: 120px;
+                backdrop-filter: blur(10px); /* performance mobile */
+            }
+        }
 
-/* BACKGROUND */
-.hero{
-position:fixed;
-inset:0;
-background:url('https://i.ibb.co/3myF702r/Captura-de-tela-2026-05-11-203849.png') center/cover no-repeat;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px;
-}
+        .badge {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255,255,255,.12);
+            font-size: 12px;
+            margin-bottom: 18px;
+        }
 
-@media(max-width:768px){
-.hero{
-background:url('https://i.ibb.co/XZVj2ZD5/Captura-de-tela-2026-05-11-203834.png') center top/cover no-repeat;
-}
-}
+        h1 {
+            font-size: 44px;
+            line-height: 1.1;
+            margin-bottom: 18px;
+        }
 
-.hero::before{
-content:"";
-position:absolute;
-inset:0;
-background:rgba(0,0,0,.55);
-backdrop-filter:blur(2px);
-}
+        @media(max-width:768px){
+            h1{ font-size: 30px; }
+        }
 
-/* CONTENT */
-.content{
-position:relative;
-z-index:2;
-max-width:620px;
-text-align:center;
-color:#fff;
-padding:42px 32px;
-border-radius:28px;
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(18px);
--webkit-backdrop-filter:blur(18px);
-border:1px solid rgba(255,255,255,.12);
-box-shadow:0 20px 60px rgba(0,0,0,.35);
-animation:fade .5s ease;
-}
+        p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #e5e7eb;
+            margin-bottom: 28px;
+        }
 
-.badge{
-display:inline-block;
-padding:8px 14px;
-border-radius:999px;
-background:rgba(255,255,255,.12);
-font-size:12px;
-margin-bottom:18px;
-}
+        /* BUTTON */
+        .btn {
+            display: inline-block;
+            padding: 16px 28px;
+            border-radius: 14px;
+            background: linear-gradient(135deg,#10b981,#0ea371);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: .2s;
+            box-shadow: 0 10px 30px rgba(16,185,129,.3);
+            cursor: pointer;
+        }
 
-h1{
-font-size:46px;
-line-height:1.1;
-margin-bottom:18px;
-}
+        .btn:hover {
+            transform: translateY(-2px);
+        }
 
-p{
-font-size:17px;
-line-height:1.7;
-color:#e5e7eb;
-margin-bottom:28px;
-}
+        /* MOBILE CTA FIXED (CONVERSION BOOST) */
+        @media(max-width:768px){
+            .btn{
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                right: 20px;
+                z-index: 9999;
+                text-align: center;
+            }
+        }
 
-/* BUTTON */
-.btn{
-display:inline-block;
-padding:16px 28px;
-border-radius:14px;
-background:linear-gradient(135deg,#10b981,#0ea371);
-color:#fff;
-text-decoration:none;
-font-weight:700;
-font-size:16px;
-transition:.22s;
-box-shadow:0 10px 30px rgba(16,185,129,.3);
-}
+        /* FOOTER */
+        .footer {
+            position: fixed;
+            bottom: 110px;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+        }
 
-.btn:hover{
-transform:translateY(-2px);
-}
+        .footer a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 13px;
+            margin: 0 10px;
+        }
 
-/* COOKIE */
-#cookieBanner{
-position:fixed;
-left:16px;
-right:16px;
-bottom:16px;
-display:flex;
-justify-content:center;
-z-index:9999;
-animation:slide .45s ease;
-}
+        /* COOKIE */
+        #cookieBanner {
+            position: fixed;
+            left: 16px;
+            right: 16px;
+            bottom: 16px;
+            display: flex;
+            justify-content: center;
+            z-index: 9999;
+        }
 
-.cookie-box{
-width:100%;
-max-width:920px;
-background:rgba(17,24,39,.94);
-backdrop-filter:blur(16px);
-border-radius:20px;
-padding:20px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:18px;
-border:1px solid rgba(255,255,255,.08);
-box-shadow:0 20px 50px rgba(0,0,0,.35);
-}
+        .cookie-box {
+            width: 100%;
+            max-width: 920px;
+            background: rgba(17,24,39,.98);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            border: 1px solid rgba(255,255,255,.08);
+        }
 
-.cookie-text h3{
-font-size:18px;
-margin-bottom:6px;
-color:#fff;
-}
+        .cookie-buttons {
+            display: flex;
+            gap: 10px;
+        }
 
-.cookie-text p{
-font-size:13px;
-margin:0;
-color:#d1d5db;
-line-height:1.6;
-}
+        .cookie-buttons button {
+            border: none;
+            padding: 13px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
 
-.cookie-buttons{
-display:flex;
-gap:10px;
-}
+        .accept { background: #10b981; color: #fff; }
+        .decline { background: #374151; color: #fff; }
 
-.cookie-buttons button{
-border:none;
-padding:13px 20px;
-border-radius:12px;
-font-weight:700;
-cursor:pointer;
-transition:.2s;
-}
+        @media(max-width:768px){
+            .cookie-box{
+                flex-direction: column;
+                text-align: center;
+            }
 
-.accept{
-background:#10b981;
-color:#fff;
-}
-
-.decline{
-background:#374151;
-color:#fff;
-}
-
-.cookie-buttons button:hover{
-transform:translateY(-2px);
-}
-
-/* FOOTER */
-.footer{
-position:fixed;
-bottom:90px;
-left:0;
-width:100%;
-text-align:center;
-z-index:5;
-padding:10px;
-}
-
-.footer a{
-color:#d1d5db;
-text-decoration:none;
-font-size:13px;
-margin:0 10px;
-transition:.2s;
-}
-
-.footer a:hover{
-color:#fff;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-
-.content{
-padding:34px 24px;
-border-radius:24px;
-}
-
-h1{
-font-size:32px;
-}
-
-p{
-font-size:15px;
-}
-
-.btn{
-width:100%;
-}
-
-.cookie-box{
-flex-direction:column;
-align-items:flex-start;
-padding:18px;
-}
-
-.cookie-buttons{
-width:100%;
-display:grid;
-grid-template-columns:1fr 1fr;
-}
-
-.cookie-buttons button{
-width:100%;
-}
-
-.footer{
-bottom:140px;
-}
-
-.footer a{
-display:block;
-margin:6px 0;
-}
-}
-
-/* ANIMATIONS */
-@keyframes fade{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-@keyframes slide{
-from{
-opacity:0;
-transform:translateY(40px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-</style>
+            .cookie-buttons{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
 <div class="hero">
+    <div class="content">
+        <div class="badge">Modern Wellness System</div>
 
-<div class="content">
+        <h1>Unlock Your Daily Energy, Focus & Balance</h1>
 
-<div class="badge">
-Modern Wellness Support
+        <p>
+            Discover a simple modern wellness approach designed to help you improve energy,
+            mental clarity and daily performance through consistent lifestyle habits.
+        </p>
+
+        <a class="btn" id="ctaButton" href="https://www.diginear.com/33W2FTW8/2358PKDD/">
+            Continue
+        </a>
+
+        <div class="footer">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
 </div>
 
-<h1>
-Support Your Daily Wellness Balance
-</h1>
-
-<p>
-Explore a modern wellness-focused approach designed to complement healthy routines, lifestyle consistency, and everyday balance.
-</p>
-
-<a class="btn"
-onclick="trackOfferClick()"
-href="https://www.diginear.com/33W2FTW8/2358PKDD/">
-Continue to Full Resource
-</a>
-
-</div>
-
-</div>
-
-<!-- FOOTER LINKS -->
-<div class="footer">
-<a href="privacy.html">Privacy Policy</a>
-<a href="terms.html">Terms & Conditions</a>
-<a href="contact.html">Contact</a>
-</div>
-
-<!-- COOKIE BANNER -->
+<!-- COOKIE -->
 <div id="cookieBanner">
+    <div class="cookie-box">
+        <div>
+            <h3>🍪 Cookie Notice</h3>
+            <p>We use cookies to improve experience and analytics.</p>
+        </div>
 
-<div class="cookie-box">
-
-<div class="cookie-text">
-<h3>🍪 Cookie Notice</h3>
-<p>
-We use cookies and similar technologies to improve your browsing experience and analyze website traffic.
-</p>
-</div>
-
-<div class="cookie-buttons">
-<button class="accept" onclick="acceptCookies()">Accept</button>
-<button class="decline" onclick="declineCookies()">Decline</button>
-</div>
-
-</div>
-
+        <div class="cookie-buttons">
+            <button class="accept" id="acceptCookies">Accept</button>
+            <button class="decline" id="declineCookies">Decline</button>
+        </div>
+    </div>
 </div>
 
 <script>
+let gtagLoaded = false;
 
-/* COOKIE ACCEPT */
-function acceptCookies(){
-localStorage.setItem("cookieConsent","accepted");
-gtag('event','cookie_accept',{
-event_category:'engagement',
-event_label:'accepted'
-});
-document.getElementById("cookieBanner").style.display="none";
+/* LOAD GA ONLY IF CONSENT */
+function loadGA(){
+    if(gtagLoaded) return;
+
+    const script = document.createElement("script");
+    script.src = "https://www.googletagmanager.com/gtag/js?id=G-Z9NM7T198P";
+    script.async = true;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+
+    gtag('js', new Date());
+    gtag('config', 'G-Z9NM7T198P');
+
+    gtagLoaded = true;
 }
 
-/* COOKIE DECLINE */
-function declineCookies(){
-localStorage.setItem("cookieConsent","declined");
-gtag('event','cookie_decline',{
-event_category:'engagement',
-event_label:'declined'
-});
-document.getElementById("cookieBanner").style.display="none";
-}
+/* COOKIE LOGIC */
+window.onload = function(){
+    const consent = localStorage.getItem("cookieConsent");
 
-/* OFFER CLICK */
-function trackOfferClick(){
-gtag('event','offer_click',{
-event_category:'affiliate',
-event_label:'glpura_offer'
-});
-}
+    if(consent === "accepted"){
+        loadGA();
+        document.getElementById("cookieBanner").style.display="none";
+    }
+};
 
+document.getElementById("acceptCookies").addEventListener("click", function(){
+    localStorage.setItem("cookieConsent","accepted");
+    loadGA();
+
+    gtag('event','cookie_accept',{
+        event_category:'engagement',
+        event_label:'accepted'
+    });
+
+    document.getElementById("cookieBanner").style.display="none";
+});
+
+document.getElementById("declineCookies").addEventListener("click", function(){
+    localStorage.setItem("cookieConsent","declined");
+
+    document.getElementById("cookieBanner").style.display="none";
+});
+
+/* CTA TRACKING */
+document.getElementById("ctaButton").addEventListener("click", function(){
+    if(window.gtag){
+        gtag('event','generate_lead',{
+            event_category:'affiliate',
+            event_label:'diginear_click'
+        });
+    }
+});
 </script>
 
 </body>
